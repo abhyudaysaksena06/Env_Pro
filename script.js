@@ -77,6 +77,17 @@ document.addEventListener("mousemove", (e) => {
 
 /* GSAP PRELOADER */
 function initPreloader() {
+    const loader = document.getElementById("loader");
+
+    // Only show preloader once per session
+    if (sessionStorage.getItem('preloaderShown') === 'true') {
+        if (loader) loader.style.display = 'none';
+        gsap.set(".nav-container, .hero, section, footer", { visibility: "visible" });
+        return;
+    }
+    
+    sessionStorage.setItem('preloaderShown', 'true');
+
     let tl = gsap.timeline();
     const words = document.querySelectorAll(".loader-text");
 
