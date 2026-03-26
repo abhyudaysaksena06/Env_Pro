@@ -12,6 +12,7 @@ const individuals = [
 
 function render(data, id) {
   const container = document.getElementById(id);
+  if (!container) return; // Safety check in case elements do not exist on the current page
 
   data.sort((a, b) => b.score - a.score);
 
@@ -68,8 +69,10 @@ if (statsSection) {
 /* CURSOR GLOW */
 const glow = document.querySelector(".cursor-glow");
 document.addEventListener("mousemove", (e) => {
-  glow.style.left = e.clientX + "px";
-  glow.style.top = e.clientY + "px";
+  if (glow) {
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+  }
 });
 
 /* GSAP PRELOADER */
@@ -103,14 +106,16 @@ function initPreloader() {
         }
     }, "-=0.3");
 
-    // Hero content entrance
-    tl.from(".hero h1, .hero p", {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power4.out"
-    }, "-=0.5");
+    // Hero content entrance (if hero exists on page)
+    if (document.querySelector(".hero")) {
+        tl.from(".hero h1, .hero p", {
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power4.out"
+        }, "-=0.5");
+    }
 }
 
 window.addEventListener("load", initPreloader);

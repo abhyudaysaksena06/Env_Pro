@@ -7,6 +7,12 @@
   <title>GreenScore</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  
+  <script>
+    if(localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    if(localStorage.getItem('text-size') === 'large') document.documentElement.setAttribute('data-text', 'large');
+  </script>
+
   <link rel="stylesheet" href="style2.css" />
 </head>
 
