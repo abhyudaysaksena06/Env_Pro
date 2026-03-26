@@ -13,6 +13,11 @@
   </head>
 
   <body>
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+      <div class="spinner"></div>
+    </div>
+
     <!-- BACKGROUND -->
     <div class="bg"></div>
     <div class="orb orb1"></div>
@@ -36,11 +41,12 @@
         <div class="hero-box">
           <h1 class="fade-in">
             Future of <br />
-            <span>Sustainability</span>
+            <span>Sustainability</span> <br />
+            at TIET Patiala
           </h1>
 
           <p class="fade-in delay">
-            Real-time environmental intelligence across systems.
+            Monitoring e-wastage, water wastage, and CO2 emissions across hostels and individuals.
           </p>
 
           <div class="hero-chips">
@@ -81,6 +87,45 @@
           <div>♻ Waste</div>
           <div>🌫 Carbon</div>
           <div>🔌 E-Waste</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AWARENESS & CALCULATOR -->
+    <section class="awareness" id="awareness">
+      <div class="container">
+        <h2 class="section-title fade-in">Your Daily Impact</h2>
+        
+        <div class="calc-wrapper">
+          <div class="calc-box fade-in">
+            <h3>Calculate Your Footprint</h3>
+            <div class="input-group">
+              <label>AC Usage (Hours)</label>
+              <input type="number" id="acHours" placeholder="e.g. 5" min="0">
+            </div>
+            <div class="input-group">
+              <label>Distance Travelled (km)</label>
+              <input type="number" id="distKm" placeholder="e.g. 10" min="0">
+            </div>
+            <div class="input-group">
+              <label>Vehicle Type</label>
+              <select id="vehicleType">
+                <option value="car">Car</option>
+                <option value="bike">Bike</option>
+                <option value="auto">Auto Rikshaw</option>
+                <option value="ev">EV Auto</option>
+              </select>
+            </div>
+            <button class="btn" onclick="calculateImpact()">Calculate Impact</button>
+            <div id="impactResult" class="impact-result"></div>
+          </div>
+          
+          <div class="analogies fade-in delay">
+            <h3>Did you know?</h3>
+            <div class="analogy-card">💧 <strong>Water:</strong> The water wasted in one hostel per day could fill 2 fire trucks.</div>
+            <div class="analogy-card">🔌 <strong>E-Waste:</strong> Annual campus e-waste equals the weight of 500 laptops.</div>
+            <div class="analogy-card">🌫 <strong>CO2:</strong> Leaving an AC on for 10 hours emits as much CO2 as driving a car for 30 km.</div>
+          </div>
         </div>
       </div>
     </section>
