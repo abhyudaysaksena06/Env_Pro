@@ -100,6 +100,19 @@ body {
   transition: 0.15s ease;
 }
 
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 100;
+}
+.hamburger span {
+  display: block; width: 25px; height: 3px;
+  background-color: var(--accent); border-radius: 3px; transition: 0.3s;
+}
+
 /* --- LARGE FLOATING NAVBAR --- */
 .nav-container {
     position: fixed;
@@ -617,6 +630,7 @@ footer {
 [data-theme='light'] .link-title, [data-theme='light'] .link { color: var(--muted); }
 [data-theme='light'] .link:hover, [data-theme='light'] .link.active { background: rgba(0,0,0,0.05); color: #15803d; }
 [data-theme='light'] .logo { color: #000; }
+[data-theme='light'] .hamburger span { background-color: #15803d; }
 [data-theme='light'] .tab-btn:hover { background: rgba(0,0,0,0.05); color: var(--text-color); }
 [data-theme='light'] .tab-btn.active { color: #000; }
 [data-theme='light'] .input-group label, [data-theme='light'] .setting-info p, [data-theme='light'] .stat p { color: var(--muted); }
@@ -751,3 +765,188 @@ input:checked + .slider:before { transform: translateX(22px); }
 [data-text='large'] h1 { font-size: 120%; }
 [data-text='large'] h2 { font-size: 115%; }
 [data-text='large'] p { font-size: 110%; }
+
+/* --- RESPONSIVE DESIGN GLOBALS --- */
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: 48px;
+  }
+  .stat h2 {
+    font-size: 48px;
+  }
+  .sidebar {
+    width: 100%;
+  }
+  .stats-inner {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .stat {
+    flex: 1 1 45%; 
+    min-width: 250px;
+  }
+  .metrics-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  .metrics-inner div {
+    flex: 1 1 40%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 36px;
+  }
+  .hero {
+    padding: 100px 0 40px;
+  }
+  .hero-box {
+    padding: 30px 15px;
+  }
+  .nav-container nav {
+    padding: 10px 20px;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .logo {
+    display: block;
+    font-size: 20px;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(3, 7, 18, 0.95);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 15px;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Hidden */
+    transition: 0.4s ease-in-out;
+    border-bottom: 1px solid rgba(74, 222, 128, 0.2);
+  }
+  [data-theme='light'] .menu { background: rgba(255, 255, 255, 0.95); }
+  .menu.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .link {
+    width: 80% !important; 
+    height: 50px !important;
+    justify-content: flex-start;
+  }
+  .link-icon {
+    width: 50px !important;
+    margin-right: 15px;
+    padding: 0 15px;
+  }
+  .link-title {
+    opacity: 1 !important;
+    transform: none !important;
+    display: inline-block !important;
+    position: static !important;
+  }
+  /* Animate hamburger to X */
+  .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  .stat h2 {
+    font-size: 40px;
+  }
+  .stat-icon {
+    font-size: 32px;
+  }
+  .chart-container canvas {
+    min-height: 250px;
+  }
+  .awareness {
+    padding: 30px 0; /* Reduced from 40px */
+  }
+  .calc-wrapper {
+    gap: 20px; /* Reduced to pull analogies closer to calc box */
+  }
+  .leaderboard {
+    padding: 20px 0; /* Drastically reduced to pull sections together */
+  }
+  .cards {
+    margin-top: 15px; 
+  }
+  .calc-box, .analogies {
+    padding: 25px 15px;
+    min-width: 100%;
+  }
+  .section-title {
+    font-size: 28px;
+  }
+  .profile-dashboard {
+    padding: 100px 0 40px;
+  }
+  .dashboard-inner {
+    gap: 20px;
+  }
+  .user-avatar {
+    margin-bottom: 15px;
+  }
+  .avatar-circle {
+    width: 65px;
+    height: 65px;
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  .user-avatar h3 {
+    font-size: 20px;
+  }
+  .sidebar {
+    padding: 25px 15px;
+  }
+  .tab-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 5px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab-btn {
+    white-space: nowrap;
+    margin-bottom: 0;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  .content-area {
+    padding: 25px 15px;
+  }
+  .form-grid {
+    gap: 15px;
+  }
+  .ai-insight-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 15px;
+  }
+  .ai-icon {
+    font-size: 32px;
+  }
+  .chart-container {
+    padding: 15px;
+    margin-top: 20px;
+  }
+  .chart-container h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 15px;
+  }
+  .switch {
+    align-self: flex-start;
+  }
+}

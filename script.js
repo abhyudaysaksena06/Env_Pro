@@ -131,6 +131,18 @@ function initPreloader() {
 
 window.addEventListener("load", initPreloader);
 
+/* MOBILE MENU TOGGLE */
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.querySelector(".hamburger");
+    const menu = document.querySelector(".menu");
+    if(hamburger && menu) {
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            menu.classList.toggle("active");
+        });
+    }
+});
+
 /* SCROLL ANIMATION */
 const observer = new IntersectionObserver(
   (entries) => {
