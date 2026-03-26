@@ -50,12 +50,84 @@
     border-color: rgba(0,0,0,0.1);
 }
 
+/* EXTENDED RESPONSIVENESS FOR LEADERBOARDS */
 @media (max-width: 900px) {
     .split-layout {
         grid-template-columns: 1fr;
     }
     .chart-wrapper {
-        min-height: 250px;
+        min-height: 260px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        font-size: 32px !important;
+    }
+    .leaderboard-dashboard .leaderboard-section {
+        padding: 20px 15px;
+        border-radius: 16px;
+    }
+    .leaderboard-dashboard .leaderboard-section h2 {
+        font-size: 26px !important;
+        text-align: center;
+    }
+    .leaderboard-dashboard .leaderboard-section p {
+        font-size: 14px !important;
+        text-align: center;
+        padding: 0 10px;
+        margin-bottom: 15px !important;
+    }
+    .split-layout {
+        gap: 20px;
+        margin-top: 15px;
+    }
+    .chart-wrapper {
+        min-height: 220px;
+        padding: 10px;
+        border-radius: 12px;
+    }
+    
+    /* Compact 2-Column Matrix for Top 5 Cards */
+    .leaderboard-dashboard .cards {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+    }
+    .leaderboard-dashboard .card {
+        padding: 12px 15px !important; /* Occupy significantly less vertical space */
+        min-height: auto;
+    }
+    /* Make the 1st card span both columns */
+    .leaderboard-dashboard .card:nth-child(1) {
+        grid-column: 1 / -1;
+    }
+    /* Shrink the text sizes to fit tightly side-by-side */
+    .leaderboard-dashboard .card h3 {
+        font-size: 14px !important;
+        margin-bottom: 2px !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .leaderboard-dashboard .card p {
+        font-size: 13px !important;
+        margin-top: 2px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adaptive Tooltips bounding boxes so they do not fall out of viewport */
+    .hover-details {
+        width: 260px;
+        max-width: 90vw;
+        font-size: 13px;
+        padding: 12px 15px;
+        white-space: normal;
+    }
+    .expand-toggle {
+        padding: 12px;
+        font-size: 13px;
     }
 }
 
