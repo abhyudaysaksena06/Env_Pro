@@ -55,19 +55,48 @@ document.addEventListener("mousemove", (e) => {
   glow.style.top = e.clientY + "px";
 });
 
-/* PRELOADER */
-window.addEventListener("load", () => {
-  const preloader = document.getElementById("preloader");
-  if (preloader) {
-    // Ensure the preloader is visible for a moment even on fast local loads
-    setTimeout(() => {
-      preloader.style.opacity = "0";
-      setTimeout(() => {
-        preloader.style.display = "none";
-      }, 500); // Wait for transition
-    }, 1500); // 1.5 seconds artificial minimum delay
-  }
-});
+/* GSAP PRELOADER */
+function initPreloader() {
+    let tl = gsap.timeline();
+    const words = document.querySelectorAll(".loader-text");
+
+    // Sundown-style rolling text transition
+    words.forEach((word) => {
+        tl.to(word, {
+            opacity: 1,
+            y: "0%",
+            duration: 0.5,
+            ease: "power3.out"
+        })
+        .to(word, {
+            opacity: 0,
+            y: "-100%",
+            duration: 0.4,
+            ease: "power3.in"
+        }, "+=0.2"); // Brief pause at center
+    });
+
+    // Final Wipe Reveal
+    tl.to("#loader", {
+        y: "-100%",
+        duration: 1,
+        ease: "expo.inOut",
+        onStart: function() {
+            gsap.set(".nav, .hero, section, footer", { visibility: "visible" });
+        }
+    }, "-=0.3");
+
+    // Hero content entrance
+    tl.from(".hero h1, .hero p", {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power4.out"
+    }, "-=0.5");
+}
+
+window.addEventListener("load", initPreloader);
 
 /* SCROLL ANIMATION */
 const observer = new IntersectionObserver(
