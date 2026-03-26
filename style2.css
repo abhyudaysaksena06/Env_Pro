@@ -161,10 +161,10 @@ body {
 
 /* Explicit widths to fit text exactly */
 .link.home-link:hover, .link.home-link.active { width: 115px; }
-.link.leader-link:hover, .link.leader-link.active { width: 160px; }
+.link.leader-link:hover, .link.leader-link.active { width: 175px; }
 .link.ewaste-link:hover, .link.ewaste-link.active { width: 130px; }
 .link.team-link:hover, .link.team-link.active { width: 105px; }
-.link.profile-link:hover, .link.profile-link.active { width: 160px; }
+.link.profile-link:hover, .link.profile-link.active { width: 170px; }
 
 .link:not(:hover) {
     transition: width 0.25s ease 0s, background-color 0.25s ease 0s;
@@ -291,13 +291,65 @@ body {
 .stats-inner {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
   text-align: center;
 }
-.stat h2 {
-  font-size: 48px;
-  color: var(--accent);
+.stat {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 40px 20px;
+  backdrop-filter: blur(12px);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+.stat::before {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at center, rgba(74, 222, 128, 0.1), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.stat:hover::before {
+  opacity: 1;
+}
+
+.stat:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(74, 222, 128, 0.08);
+  border-color: rgba(74, 222, 128, 0.3);
+}
+
+.stat-icon {
+  font-size: 42px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+.stat h2 {
+  font-size: 64px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #fff, var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5px;
+}
+
+.stat p {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
 /* METRICS */
 .metrics-inner {
   display: flex;
@@ -516,6 +568,7 @@ footer {
   transform: translateY(0);
 }
 
-.delay {
-  transition-delay: 0.2s;
-}
+.delay { transition-delay: 0.2s; }
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }

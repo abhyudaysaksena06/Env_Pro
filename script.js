@@ -33,20 +33,37 @@ function render(data, id) {
 render(hostels, "hostelCards");
 render(individuals, "individualCards");
 
-/* COUNTERS */
-document.querySelectorAll(".counter").forEach((counter) => {
-  let update = () => {
-    let target = +counter.dataset.target;
-    let count = +counter.innerText;
-    let inc = target / 50;
+/* DYNAMIC SCROLL COUNTERS */
+const statsSection = document.getElementById('stats-section');
+let countersStarted = false;
 
-    if (count < target) {
-      counter.innerText = Math.ceil(count + inc);
-      setTimeout(update, 20);
-    } else counter.innerText = target;
-  };
-  update();
-});
+if (statsSection) {
+  const statsObserver = new IntersectionObserver((entries) => {
+    if(entries[0].isIntersecting && !countersStarted) {
+      countersStarted = true;
+      document.querySelectorAll(".counter").forEach((counter) => {
+        let target = +counter.dataset.target;
+        let count = 0;
+        let duration = 2000;
+        let increment = target / (duration / 20);
+        counter.innerText = "0";
+
+        let update = () => {
+          count += increment;
+          if (count < target) {
+            counter.innerText = Math.ceil(count);
+            setTimeout(update, 20);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        // Add random slight stagger to counters popping off
+        setTimeout(update, Math.random() * 400); 
+      });
+    }
+  }, { threshold: 0.4 });
+  statsObserver.observe(statsSection);
+}
 
 /* CURSOR GLOW */
 const glow = document.querySelector(".cursor-glow");
