@@ -89,7 +89,7 @@ function calculateImpact() {
   const vehicleType = document.getElementById("vehicleType").value;
 
   // Constants (approximate kg CO2)
-  const acCo2PerHour = 1.0; 
+  const acCo2PerHour = 0.45;
   let transportCo2PerKm = 0;
 
   switch (vehicleType) {
@@ -107,7 +107,7 @@ function calculateImpact() {
   if (totalImpact > 0) {
     const mobileCharges = Math.round(totalImpact * 122); // 1kg CO2 = ~122 smartphone charges
     const treeAbsorption = (totalImpact / 21).toFixed(1); // 1 tree absorbs ~21kg CO2 per year
-    
+
     analogy = `
       <p>Your footprint for these activities is <strong>${totalImpact} kg of CO2</strong>.</p>
       <br>
