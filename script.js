@@ -59,10 +59,13 @@ document.addEventListener("mousemove", (e) => {
 window.addEventListener("load", () => {
   const preloader = document.getElementById("preloader");
   if (preloader) {
-    preloader.style.opacity = "0";
+    // Ensure the preloader is visible for a moment even on fast local loads
     setTimeout(() => {
-      preloader.style.display = "none";
-    }, 500); // Wait for transition
+      preloader.style.opacity = "0";
+      setTimeout(() => {
+        preloader.style.display = "none";
+      }, 500); // Wait for transition
+    }, 1500); // 1.5 seconds artificial minimum delay
   }
 });
 
