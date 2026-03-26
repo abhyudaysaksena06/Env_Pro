@@ -227,6 +227,7 @@
 [data-theme='light'] .page-header {
     background: linear-gradient(90deg, #0f172a, var(--accent)) !important;
     -webkit-background-clip: text !important;
+    background-clip: text !important;
 }
 
 /* Mobile Tweak For Popover (prevent clipping off screen edges) */
