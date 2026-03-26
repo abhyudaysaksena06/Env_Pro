@@ -82,7 +82,7 @@ function initPreloader() {
         duration: 1,
         ease: "expo.inOut",
         onStart: function() {
-            gsap.set(".nav, .hero, section, footer", { visibility: "visible" });
+            gsap.set(".nav-container, .hero, section, footer", { visibility: "visible" });
         }
     }, "-=0.3");
 
@@ -151,7 +151,19 @@ function calculateImpact() {
     analogy = "<p>Please enter valid usage data to see your impact.</p>";
   }
 
-  const resultBox = document.getElementById("impactResult");
+const resultBox = document.getElementById("impactResult");
   resultBox.innerHTML = analogy;
   resultBox.style.display = "block";
+}
+
+/* NAVBAR SCROLL */
+const navContainer = document.getElementById('navContainer');
+if (navContainer) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navContainer.classList.add('scrolled');
+        } else {
+            navContainer.classList.remove('scrolled');
+        }
+    });
 }
