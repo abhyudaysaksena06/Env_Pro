@@ -142,6 +142,30 @@
     color: #fff;
 }
 
+/* Dynamic Search Input */
+.search-input {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: var(--accent);
+}
+
+[data-theme='light'] .search-input {
+    background: rgba(0,0,0,0.03);
+    border-color: rgba(0,0,0,0.15);
+    color: #0f172a;
+}
+
 /* Marketplace Portals */
 .portal-grid {
     display: grid;
@@ -202,6 +226,39 @@
 
 @media (max-width: 768px) {
     .portal-grid { grid-template-columns: 1fr; }
+    
+    .page-header {
+        font-size: 32px !important;
+    }
+    
+    .ewaste-locator p, .marketplace p, .marketplace-portals p {
+        font-size: 14px !important;
+    }
+    
+    .market-header h2, .marketplace h2, .marketplace-portals h2 {
+        font-size: 28px !important;
+    }
+
+    .form-card {
+        padding: 25px 20px !important;
+    }
+
+    .form-split-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0px !important;
+    }
+
+    .form-split-grid .form-group {
+        margin-bottom: 20px;
+    }
+
+    #successText {
+        font-size: 32px !important;
+    }
+    
+    #successSub {
+        font-size: 15px !important;
+    }
 }
 
 @media (max-width: 600px) {
