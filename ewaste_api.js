@@ -15,11 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.className = "card fade-in delay-" + ((index % 3) + 1);
             
-            // Prevent local file system mapping crash by injecting dynamic API route
-            const backendBase = window.location.protocol === 'file:' ? 'http://localhost:3000' : `http://${window.location.hostname}:3000`;
-            const fullPhotoUrl = item.photoUrl ? `${backendBase}${item.photoUrl}` : null;
-            const photoHtml = fullPhotoUrl 
-                ? `<div class="market-img" style="background-image:url('${fullPhotoUrl}'); background-size:cover; background-position:center; background-color:transparent;"></div>`
+            // Cloudinary API handles URL CDNs natively; no backendBase mapping required!
+            const photoHtml = item.photoUrl 
+                ? `<div class="market-img" style="background-image:url('${item.photoUrl}'); background-size:cover; background-position:center; background-color:transparent;"></div>`
                 : `<div class="market-img">📦</div>`;
 
             card.innerHTML = `
