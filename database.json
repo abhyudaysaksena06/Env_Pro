@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1700000000000",
+    "serialNumber": "SN-FX991-0A",
+    "itemName": "Old Calculator fx-991EX",
+    "itemPrice": "₹400",
+    "description": "Fully Working, used for 2 semesters. Minor scratches on the back casing.",
+    "listedBy": "Aarav S.",
+    "photoUrl": null,
+    "status": "Available",
+    "createdAt": "2026-03-27T10:00:00Z"
+  },
+  {
+    "id": "1700000000001",
+    "serialNumber": "LP-THK-8923",
+    "itemName": "Lenovo ThinkPad (For Parts)",
+    "itemPrice": "₹2500",
+    "description": "Dead motherboard. Screen and RAM modules still perfectly intact.",
+    "listedBy": "Priya M.",
+    "photoUrl": null,
+    "status": "Available",
+    "createdAt": "2026-03-27T10:15:00Z"
+  },
+  {
+    "id": "1774608806123",
+    "serialNumber": "SN-2212",
+    "itemName": "Charger 20W Lenovo",
+    "itemPrice": "250",
+    "description": "No description provided.",
+    "listedBy": "Abhyuday Saksena",
+    "photoUrl": "/uploads/1774608806105-Screenshot 2025-11-11 001609.png",
+    "status": "Available",
+    "createdAt": "2026-03-27T10:53:26.123Z"
+  }
+]
