@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.className = "card fade-in delay-" + ((index % 3) + 1);
             
-            const fullPhotoUrl = item.photoUrl ? `http://localhost:3000${item.photoUrl}` : null;
+            // Prevent local file system mapping crash by injecting dynamic API route
+            const backendBase = window.location.protocol === 'file:' ? 'http://localhost:3000' : `http://${window.location.hostname}:3000`;
+            const fullPhotoUrl = item.photoUrl ? `${backendBase}${item.photoUrl}` : null;
             const photoHtml = fullPhotoUrl 
                 ? `<div class="market-img" style="background-image:url('${fullPhotoUrl}'); background-size:cover; background-position:center; background-color:transparent;"></div>`
                 : `<div class="market-img">📦</div>`;
@@ -51,8 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Dynamic IP mapping for mobile cross-device tracking
+    const backendBase = window.location.protocol === 'file:' ? 'http://localhost:3000' : `http://${window.location.hostname}:3000`;
+
     // Fetch live inventory from local Node.js backend
-    fetch('http://localhost:3000/api/items')
+    fetch(`${backendBase}/api/items`)
         .then(response => {
             if(!response.ok) throw new Error('Network response failed');
             return response.json();

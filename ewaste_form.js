@@ -25,8 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     formData.append('itemPhoto', fileInput.files[0]);
                 }
 
+                // Dynamic IP detection for cross-device mobile testing
+                const backendBase = window.location.protocol === 'file:' ? 'http://localhost:3000' : `http://${window.location.hostname}:3000`;
+
                 // Push explicitly to local node server REST endpoint 
-                const response = await fetch('http://localhost:3000/api/items', {
+                const response = await fetch(`${backendBase}/api/items`, {
                     method: 'POST',
                     body: formData // Note: Form data automatically sets correct Multpiart boundaries natively!
                 });
