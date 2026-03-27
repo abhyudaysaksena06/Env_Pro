@@ -534,8 +534,13 @@ body {
 }
 
 .card.top {
-  background: linear-gradient(135deg, #4ade80, #15803d);
-  color: black;
+  background: rgba(74, 222, 128, 0.1) !important;
+  border: 1px solid rgba(74, 222, 128, 0.3) !important;
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.1) !important;
+}
+[data-theme='light'] .card.top {
+  background: rgba(21, 128, 61, 0.05) !important;
+  border-color: rgba(21, 128, 61, 0.2) !important;
 }
 
 /* FOOTER */
