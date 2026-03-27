@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GreenScore - E-Waste</title>
-  
+  <title>GreenScore - Buy E-Waste</title>
   <script>
     if(localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light');
     if(localStorage.getItem('text-size') === 'large') document.documentElement.setAttribute('data-text', 'large');
   </script>
-
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style2.css" />
   <link rel="stylesheet" href="ewaste.css" />
@@ -24,7 +22,6 @@
     </div>
   </div>
 
-  <!-- BG ELEMENTS -->
   <div class="bg"></div>
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
@@ -34,13 +31,7 @@
   <div class="nav-container" id="navContainer">
     <nav>
       <div class="logo">GreenScore</div>
-      
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
+      <div class="hamburger"><span></span><span></span><span></span></div>
       <div class="menu">
         <a href="index.html" class="link home-link">
           <span class="link-icon">
@@ -87,64 +78,31 @@
     </nav>
   </div>
 
-  <!-- E-WASTE HERO (Map Locator) -->
-  <section class="ewaste-locator">
-    <div class="container dashboard-inner">
-      <h1 class="page-header" style="text-align:center; font-size:48px; margin-bottom:10px; font-weight:800; background: linear-gradient(90deg, #fff, var(--accent)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Campus E-Waste Bins</h1>
-      <p style="text-align:center; color:var(--muted); margin-bottom: 40px; font-size: 16px;">Locate authorized disposal bins across the Thapar Institute campus securely.</p>
-      
-      <div class="map-wrapper fade-in">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13775.335272667357!2d76.3533475!3d30.3541819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391028ab86533db5%3A0x93cc1f72eae1c9a8!2sThapar%20Institute%20of%20Engineering%20%26%20Technology!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- E-WASTE ANALYTICS -->
-  <section class="stats" id="stats-section" style="padding-top: 0;">
-    <div class="container stats-inner">
-      <div class="stat fade-in delay-1">
-        <div class="stat-icon">⚠️</div>
-        <h2 class="counter" data-target="1520">0</h2>
-        <p>E-Waste Generated (kg)</p>
-      </div>
-
-      <div class="stat fade-in delay-2">
-        <div class="stat-icon">🔄</div>
-        <h2 class="counter" data-target="864">0</h2>
-        <p>E-Waste Reused (kg)</p>
-      </div>
-
-      <div class="stat fade-in delay-3">
-        <div class="stat-icon">♻️</div>
-        <h2 class="counter" data-target="656">0</h2>
-        <p>Discarded Safely (kg)</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- E-WASTE MARKETPLACE PORTALS -->
-  <section class="marketplace-portals">
+  <section class="marketplace" style="padding-top: 140px; min-height: 100vh;">
     <div class="container" style="display: block;">
-      <h2 style="color:var(--accent); margin-bottom:15px; font-size:36px; text-align:center;">Peer-to-Peer Marketplace</h2>
-      <p style="color:var(--muted); text-align:center; margin-bottom: 40px; font-size:16px;">Securely buy, sell, and claim recycled electronics organically on campus.</p>
       
-      <div class="portal-grid">
-        <a href="E_Waste_Buy.html" class="portal-card fade-in">
-          <div class="portal-icon">🛒</div>
-          <h3>Buy E-Waste</h3>
-          <p>Browse available calculators, components, and salvaged parts listed by peers.</p>
-        </a>
-        <a href="E_Waste_Sell.html" class="portal-card fade-in delay-1">
-          <div class="portal-icon">📦</div>
-          <h3>Sell / List Item</h3>
-          <p>Upload photos and details of your unused electronics to find them a new home.</p>
-        </a>
+      <div class="market-header fade-in" style="justify-content: center; text-align: center; width: 100%;">
+        <div style="width: 100%;">
+          <div style="text-align: left; width: 100%;">
+            <a href="E_Waste.html" style="color:var(--accent); text-decoration:none; font-weight:600; margin-bottom:10px; display:inline-block;">← Back to E-Waste Portals</a>
+          </div>
+          <h2 style="color:var(--accent); margin-bottom:5px; font-size:36px;">Live Marketplace (Buy)</h2>
+          <p style="color:var(--muted);">Secure items seamlessly from your verified university peers.</p>
+        </div>
       </div>
+
+      <!-- ERROR / LOADING STATE -->
+      <div id="marketStatus" style="text-align: center; color: var(--muted); padding: 40px; font-style: italic;">
+        Fetching live listings from backend...
+      </div>
+
+      <div class="cards" id="marketplaceCards"></div>
+      
     </div>
   </section>
 
-  <!-- SCRIPTS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="script.js"></script>
+  <script src="ewaste_api.js"></script>
 </body>
 </html>
